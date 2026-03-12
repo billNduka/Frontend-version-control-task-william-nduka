@@ -1,21 +1,35 @@
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.Year;
+import java.util.Scanner;
 
 public class MondaysInMonthReport
 {
-
-    public static String returnReport(String givenMonth) throws InvalidDateInputException
+    public static String returnReport(String givenMonth, String givenYear) throws InvalidDateInputException
     {
-        int currentYear = Year.now().getValue();
+        int currentYear;
+        try {
+            currentYear = Integer.parseInt(givenYear);
+        } catch (NumberFormatException e) {
+            throw new InvalidDateInputException(
+                    "Year must be a valid number.",
+                    e
+            );
+        }
+
+        if (currentYear < 1) {
+            throw new InvalidDateInputException(
+                    "Year must be greater than 0."
+            );
+        }
 
         Month monthInput;
+
         try {
             monthInput = Month.valueOf(givenMonth.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new InvalidDateInputException(
-                "Invalid month. Please enter a valid month name (e.g., January).",
+                    "Invalid month. Please enter a valid month name (e.g., January).",
                     e
             );
         }
@@ -46,10 +60,18 @@ public class MondaysInMonthReport
 
     public static void main(String[] args)
     {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter given month: ");
+        String month = scanner.nextLine();
+
+        System.out.println("\nEnter given year: ");
+        String year = scanner.nextLine();
+
         try {
-            System.out.println(returnReport("February"));
+            System.out.println(returnReport(month, year));
         } catch (InvalidDateInputException e) {
-            System.err.println(e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
 
     }
