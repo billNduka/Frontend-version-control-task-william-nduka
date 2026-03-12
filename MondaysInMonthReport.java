@@ -6,10 +6,19 @@ import java.time.Year;
 public class MondaysInMonthReport
 {
 
-    public static String returnReport(String givenMonth)
+    public static String returnReport(String givenMonth) throws InvalidDateInputException
     {
         int currentYear = Year.now().getValue();
-        Month monthInput = Month.valueOf(givenMonth.toUpperCase());
+
+        Month monthInput;
+        try {
+            monthInput = Month.valueOf(givenMonth.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new InvalidDateInputException(
+                "Invalid month. Please enter a valid month name (e.g., January).",
+                    e
+            );
+        }
 
         LocalDate date = LocalDate.of(currentYear, monthInput, 1);
         StringBuilder report = new StringBuilder("Mondays in " + monthInput + " " + currentYear + ":\n");
@@ -37,7 +46,11 @@ public class MondaysInMonthReport
 
     public static void main(String[] args)
     {
-        System.out.println(returnReport("February"));
+        try {
+            System.out.println(returnReport("February"));
+        } catch (InvalidDateInputException e) {
+            System.err.println(e.getMessage());
+        }
 
     }
 }
