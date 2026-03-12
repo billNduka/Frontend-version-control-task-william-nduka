@@ -49,9 +49,8 @@ Adds validation for user input including:
 * Invalid year values
 * Custom exception handling
 
-### feature-output-formatting
-
-Improves the formatting and readability of the program output.
+### feature-frontend-ui
+Added a javafx frontend to the program.
 
 ---
 
@@ -99,6 +98,9 @@ git fetch
 ```
 
 ---
+
+<img width="1853" height="577" alt="image" src="https://github.com/user-attachments/assets/ef2ac8e7-f2bf-4bf0-86dd-3a9daccb701b" />
+
 
 ## Git Commands Used Most Frequently
 
