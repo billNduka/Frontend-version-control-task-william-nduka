@@ -1,3 +1,5 @@
+package src.logic;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;

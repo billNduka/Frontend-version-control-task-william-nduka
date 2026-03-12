@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<TabPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="ui.MainController">
+
+    <Tab text="Month Length">
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15" />
+            </padding>
+
+            <TextField fx:id="yearField" promptText="Enter year" />
+            <Button onAction="#handleMonthLength" text="Generate" />
+            <TextArea fx:id="monthLengthOutput" maxHeight="1.7976931348623157E308" prefHeight="246.0" prefWidth="516.0">
+            <VBox.margin>
+               <Insets bottom="20.0" />
+            </VBox.margin></TextArea>
+        </VBox>
+    </Tab>
+
+    <Tab text="Mondays">
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15" />
+            </padding>
+
+            <TextField fx:id="monthField" promptText="Enter month" />
+            <Button onAction="#handleMondays" text="Generate" />
+            <TextArea fx:id="mondaysOutput" prefHeight="256.0" prefWidth="516.0" />
+        </VBox>
+    </Tab>
+
+    <Tab text="Friday the 13th">
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15" />
+            </padding>
+
+            <DatePicker fx:id="datePicker" promptText="Select a Date" />
+            <Button onAction="#handleFriday13" text="Check" />
+            <Label fx:id="fridayOutput" />
+        </VBox>
+    </Tab>
+
+</TabPane>
